@@ -1,23 +1,29 @@
 const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
+const User = require('../models/user')
 const logger = require('../utils/logger')
+const jwt = require('jsonwebtoken')
 
-blogsRouter.get('/', (request, response) => {
+blogsRouter.get('/', async (request, response) => {
   logger.info("Getting all blogs...")
-  Blog
+  const blogs = await Blog
     .find({})
-    .then(blogs => {
-      response.json(blogs)
-    })
+    .populate('user')
+  response.json(blogs)
 })
 
-blogsRouter.post('/', (request, response) => {
+blogsRouter.post('/', async (request, response) => {
   logger.info("Posting new blog...")
-  const blog = new Blog(request.body)
+
+  const user = await User.findById(request.user.id)
+  const blog = new Blog(body)
   const blogObj = blog.toObject()
   if (!blogObj.hasOwnProperty('title') || !blogObj.hasOwnProperty('url')) response.status(400).end()
   else {
     if (!blog.hasOwnProperty('likes')) blog['likes'] = 0
+    user.blogs.push(blog._id)
+    await user.save()
+    blog['user'] = user
     blog
       .save()
       .then(result => {
@@ -28,7 +34,16 @@ blogsRouter.post('/', (request, response) => {
 
 blogsRouter.delete('/:id', async (request, response) => {
   logger.info("Deleting blog...")
-  await Blog.findByIdAndRemove(request.params.id)
+
+  const user = await User.findById(request.user.id)
+  const userId = user._id.toString()
+
+  blog = await Blog.findById(request.params.id)
+  const blogUserId = blog.user.toString()
+  if (userId != blogUserId) {
+    return response.status(400).json({ error: 'incorrect user' })
+  } 
+
   response.status(204).end()
 })
 
