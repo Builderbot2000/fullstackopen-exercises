@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs 
+Content-Type: application/json
+
+{
+    "title": "Crazy Foodies",
+    "author": "Joe Carman",
+    "url": "https://crazyfoodies.com",
+    "likes": 69
+}
