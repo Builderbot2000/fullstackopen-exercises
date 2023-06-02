@@ -6,7 +6,7 @@ const getAll = async () => {
   return response.data
 }
 
-const createNew = async ({title, author, url, user}) => {
+const createNew = async ({ title, author, url, user }) => {
   const newBlog = {
     title: title,
     author: author,
@@ -23,5 +23,36 @@ const createNew = async ({title, author, url, user}) => {
   }
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { getAll, createNew }
+const increaseLike = async ({ blog, user }) => {
+  const newBlog = {
+    id: blog.id,
+    user: blog.user.id,
+    title: blog.title,
+    author: blog.author,
+    url: blog.url,
+    likes: blog.likes + 1
+  }
+  const config = {
+    headers: { Authorization: `Bearer ${user.token}` }
+  }
+  try {
+    const response = await axios.put(`${baseUrl}/${blog.id}`, newBlog, config)
+    return response.data
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+const remove = async ({ blog, user }) => {
+  const config = {
+    headers: { Authorization: `Bearer ${user.token}` }
+  }
+  try {
+    const response = await axios.delete(`${baseUrl}/${blog.id}`, config)
+    return response.data
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export default { getAll, createNew, increaseLike, remove }
