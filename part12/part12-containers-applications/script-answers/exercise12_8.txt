@@ -1,0 +1,52 @@
+Script started on 2023-08-18 17:40:06-07:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="172" LINES="41"]
+[?2004h]0;root@DOGE: /mnt/c/Users/kevin/Documents/fullstackopen/fullstackopen-exercises/part12/part12-containers-applications/todo-app/todo-backendroot@DOGE:/mnt/c/Users/kevin/Documents/fullstackopen/fullstackopen-exercises/part12/part12-containers-applications/todo-app/todo-backend# docker exec -it todo-backend-mongo-1 mongosh --username the_username --password the_password --authenticationDatabase the_database
+[?2004l]0;mongosh mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&authSource=the_databaseCurrent Mongosh Log ID:	64e00f691ef8bc0b62113b1f
+Connecting to:		[1m[32mmongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&authSource=the_database&appName=mongosh+1.10.5[0m
+Using MongoDB:		6.0.9
+[1m[33mUsing Mongosh[0m:		1.10.5
+
+For mongosh info see: [1mhttps://docs.mongodb.com/mongodb-shell/[0m
+
+[1G[0J [1G[1G[0Jtest> [7Gshow dbs
+[1mthe_database[0m  40.00 KiB
+[1G[0Jtest> [7Guse the_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow collections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdb.todos.find({})
+[
+  {
+    _id: ObjectId("64e008cf3f201684eb38497f"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("64e008cf3f201684eb384980"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId("64e008cf3f201684eb38497f"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("64e008cf3f201684eb384980"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("64e010234e1f8239e87d7a7b"),
+    text: [32m'Increase the number of tools in my toolbelt'[39m,
+    done: [33mfalse[39m,
+    __v: [33m0[39m
+  }
+]
+[1G[0Jthe_database> [15Gexit
+[?2004h]0;root@DOGE: /mnt/c/Users/kevin/Documents/fullstackopen/fullstackopen-exercises/part12/part12-containers-applications/todo-app/todo-backendroot@DOGE:/mnt/c/Users/kevin/Documents/fullstackopen/fullstackopen-exercises/part12/part12-containers-applications/todo-app/todo-backend# exit
+[?2004lexit
+
+Script done on 2023-08-18 17:43:38-07:00 [COMMAND_EXIT_CODE="0"]

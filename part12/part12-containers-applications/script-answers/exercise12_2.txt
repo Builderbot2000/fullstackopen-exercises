@@ -1,0 +1,11 @@
+Script started on 2023-08-14 17:45:24-07:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="120" LINES="30"]
+[?2004h]0;root@DOGE: /mnt/c/Users/kevin/Documents/fullstackopen/fullstackopen-exercises/part12/part12-containers-applications/script-answersroot@DOGE:/mnt/c/Users/kevin/Documents/fullstackopen/fullstackopen-exercises/part12/part12-containers-applications/script-answers# docker run -it ubuntu bash
+[?2004l[?2004h]0;root@27e6937f7429: /root@27e6937f7429:/# mkdir /usr/src/app
+[?2004l[?2004h]0;root@27e6937f7429: /root@27e6937f7429:/# cd mkdir /usr/src/app[1P[1P[1P[1P[1P[1P
+[?2004l[?2004h]0;root@27e6937f7429: /usr/src/approot@27e6937f7429:/usr/src/app# echo > index.js
+[?2004l[?2004h]0;root@27e6937f7429: /usr/src/approot@27e6937f7429:/usr/src/app# exit
+[?2004lexit
+[?2004h]0;root@DOGE: /mnt/c/Users/kevin/Documents/fullstackopen/fullstackopen-exercises/part12/part12-containers-applications/script-answersroot@DOGE:/mnt/c/Users/kevin/Documents/fullstackopen/fullstackopen-exercises/part12/part12-containers-applications/script-answers# exit
+[?2004lexit
+
+Script done on 2023-08-14 17:46:27-07:00 [COMMAND_EXIT_CODE="0"]
